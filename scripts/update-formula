@@ -1,0 +1,16 @@
+#!/bin/sh
+set -euo pipefail
+
+repo_root=$(git rev-parse --show-toplevel)
+formula=$1
+if [ -z "${2-}" ]; then
+  tap="Homebrew/homebrew-core"
+else
+  tap=${1/\//\/homebrew-}
+  formula=$2
+fi
+
+url=https://raw.githubusercontent.com/$tap/master/Formula/$formula.rb
+
+echo "Fetching... $url"
+curl -L https://raw.githubusercontent.com/$tap/master/Formula/$formula.rb -o $repo_root/Formula/$formula.rb

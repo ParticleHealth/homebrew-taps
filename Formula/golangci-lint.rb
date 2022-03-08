@@ -16,7 +16,7 @@ class GolangciLint < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "be97f50d4811fa804a73d419885b9dbeb6209ef012472005f4f53364909e6111"
   end
 
-  depends_on "go"
+  depends_on "ParticleHealth/taps/go"
 
   def install
     ldflags = %W[
